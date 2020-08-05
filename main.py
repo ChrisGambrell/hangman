@@ -33,8 +33,9 @@ for i in range(0, 7):
 
 # game variables
 hangman_status = 0
+# word has to be <= 22 chars
 words = ['HELLO', 'PYTHON', 'PYGAME', 'IDE', 'REPLIT', 'DEVELOPER']
-word = random.choice(words)
+word = '1234567890123456789012'  # random.choice(words)
 guessed = []
 
 # colors
@@ -62,7 +63,7 @@ def draw():
             display_word += '_ '
 
     text = WORD_FONT.render(display_word, 1, BLACK)
-    win.blit(text, (400, 200))
+    win.blit(text, (30, 325))
 
     # draw buttons
     for letter in letters:
