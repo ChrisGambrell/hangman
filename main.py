@@ -31,10 +31,24 @@ for i in range(0, 7):
     image = pygame.image.load('images/hangman' + str(i) + '.png')
     images.append(image)
 
+
+def get_words():
+    words = []
+    f = open('words.txt', 'r')
+
+    print('[ INFO ] Fetching word bank...')
+    for line in f:
+        words.append(line[0:len(line) - 1])
+
+    print('[ SUCCESS ] Got word bank')
+
+    return words
+
+
 # game variables
 hangman_status = 0
 # word has to be <= 22 chars
-words = ['HELLO', 'PYTHON', 'PYGAME', 'IDE', 'REPLIT', 'DEVELOPER']
+words = get_words()
 word = random.choice(words)
 guessed = []
 
@@ -81,9 +95,15 @@ def draw():
 def display_message(message):
     pygame.time.delay(1000)
     win.fill(WHITE)
+
     text = WORD_FONT.render(message, 1, BLACK)
     win.blit(text, (WIDTH // 2 - text.get_width() //
                     2, HEIGHT // 2 - text.get_height() // 2))
+
+    text = WORD_FONT.render('Your word was... ' + word, 1, BLACK)
+    win.blit(text, (WIDTH // 2 - text.get_width() //
+                    2, HEIGHT // 2 - text.get_height() // 2 + 50))
+
     pygame.display.update()
     pygame.time.delay(3000)
 
