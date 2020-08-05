@@ -35,7 +35,7 @@ for i in range(0, 7):
 hangman_status = 0
 # word has to be <= 22 chars
 words = ['HELLO', 'PYTHON', 'PYGAME', 'IDE', 'REPLIT', 'DEVELOPER']
-word = '1234567890123456789012'  # random.choice(words)
+word = random.choice(words)
 guessed = []
 
 # colors
